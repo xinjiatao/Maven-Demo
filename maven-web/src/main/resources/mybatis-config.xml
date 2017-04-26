@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		
+		<setting name="defaultExecutorType" value="REUSE" />
+	</settings>
+<!-- 	<plugins> -->
+<!-- 		<plugin interceptor="com.xjt.core.persistence.PagingStatementHandlerInterceptor"> -->
+<!-- 			<property name="dialect" value="com.xjt.core.persistence.MySQLDialect" /> -->
+<!-- 			<property name="limit" value="65535" /> -->
+<!-- 		</plugin> -->
+<!-- 		<plugin interceptor="com.xjt.core.persistence.PagingResultSetHandlerInterceptor" /> -->
+<!-- 	</plugins> -->
+
+</configuration>

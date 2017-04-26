@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xjt.manager.login.dao.HomeMapper" >
+  <resultMap id="BaseResultMap" type="com.xjt.manager.login.bo.Home" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="pswd" property="pswd" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="BIGINT" />
+  </resultMap>	
+  
+  <sql id="Base_Column_List" >
+    id, nickname, email, pswd, create_time, last_login_time,status
+  </sql>
+  
+  <select id="findUser2" resultMap="BaseResultMap">
+		SELECT nickname FROM U_USER
+  </select>
+  
+  <select id="selectUserPage" resultMap="BaseResultMap">
+		SELECT * FROM U_USER
+  </select>
+  
+  <!-- 登录 -->
+  <select id="login" resultMap="BaseResultMap" >
+  	 select 
+    <include refid="Base_Column_List" />
+    from u_user
+    where email = #{email,jdbcType=VARCHAR} and  pswd = #{pswd,jdbcType=VARCHAR} 
+  </select>
+  
+  <!-- 根据ID查询角色 -->
+  <select id="findRoleByUserId" resultType="java.lang.String">
+  		select r.type from u_role r,u_user_role ur where ur.rid = r.id and ur.uid = #{id,jdbcType=BIGINT}
+  </select>
+  
+   <!-- 根据用ID查询permission -->
+  <select id="findPermissionByUserId" resultType="java.lang.String">
+  		select p.url from u_permission p , u_role_permission rp, u_user_role ur 
+		where uid =#{id,jdbcType=BIGINT} and p.id = rp.pid and rp.rid = ur.rid
+  </select>
+
+</mapper>
