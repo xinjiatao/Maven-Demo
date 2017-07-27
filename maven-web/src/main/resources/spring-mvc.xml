@@ -23,6 +23,8 @@
 	
 	<context:component-scan base-package="com.xjt.core.shiro.service"/>
 	<context:component-scan base-package="com.xjt.core.shiro.service.impl"/>
+	<context:component-scan base-package="com.xjt.manager.activemq.controller"/>
+	<context:component-scan base-package="com.xjt.manager.activemq.*"/>
 
 	<mvc:resources mapping="/images/**" location="/images/" />
 	<mvc:resources mapping="/demo/**" location="/demo/" />
